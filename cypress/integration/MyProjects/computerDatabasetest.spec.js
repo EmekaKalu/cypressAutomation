@@ -209,7 +209,7 @@ describe('computer database', () => {
         cy.get('.alert-message').should('exist')
     });
     
-    it('Tc_1.21', () => {
+    it('Tc_1.22', () => {
         cy.get('#add').click()
         cy.get('#name').type('Honda computer 10')
         cy.get('#introduced').type('2012-02-03')

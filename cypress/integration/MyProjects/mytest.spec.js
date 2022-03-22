@@ -1,5 +1,7 @@
 ///<reference types= "cypress" />
 
+const { each } = require("cypress/types/lodash");
+
 describe('My test', () => {
     beforeEach(() => {
         
@@ -15,4 +17,5 @@ describe('My test', () => {
     it('second', () => {
         cy.get('h1').contains('Instagram')        
     });
+
 });
