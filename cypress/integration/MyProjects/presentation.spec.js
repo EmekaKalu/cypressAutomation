@@ -24,7 +24,10 @@ describe('My presentation', () => {
 
     it('submit registration with assertions', function (){
 
+        //makes object a variable
         const homepage=new HomePage
+
+        //calls the cypress command from the 
         homepage.getnameBox().type(this.data.name)
         homepage.getgenderbox().select(this.data.gender)
     });

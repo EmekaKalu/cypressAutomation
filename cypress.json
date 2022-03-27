@@ -1,1 +1,7 @@
-{}
+{
+    "env" :
+    {
+        "aUrl" : "https://admin-stg.liveet.co",
+        "oUrl" : "https://Organizer-stg.liveet.co"
+    }
+}
