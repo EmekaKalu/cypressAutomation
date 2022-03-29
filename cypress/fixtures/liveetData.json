@@ -1,4 +1,12 @@
 {
     "username": "quales01",
-    "password": "quales"
+    "password": "quales",
+    "name" : "lillian",
+    "email" : "lillian@yahoo.com",
+    "phoneNum" : "08011144424",
+    "address" : "7 opebi road, Lagos",
+    "user" : "lily",
+    "pass" : "test123",
+    "newName" : "Trisha",
+    "newAddress" : "34 CMD road, Magodo"
 }

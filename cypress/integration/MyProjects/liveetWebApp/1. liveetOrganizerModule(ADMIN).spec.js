@@ -9,16 +9,18 @@
 /// <reference types= 'cypress' />
 
 //Imports page objects contents to this file
-import lwaD from "../../support/pageObjects/liveetDash";
-import lwaOrg from "../../support/pageObjects/liveetOrg";
+import lwaD from "../../../support/pageObjects/liveetDash";
+import lwaOrg from "../../../support/pageObjects/liveetOrg";
 
-describe('LiveetApp Test Suite', () => {
+describe('LiveetApp (ADMIN) Organizer Module Test Suite', () => {
 
     const LwaD = new lwaD();
     const LwaOrg = new lwaOrg();
 
     //To allow fixtures to be used in all test cases
     beforeEach(function() {
+
+        //This calls values from the liveetData.json file
         cy.fixture('liveetData').then(function(data) {
             this.lwadata = data
         })
@@ -32,11 +34,54 @@ describe('LiveetApp Test Suite', () => {
         
         //Here I created a custom login command which logins the Admin portal with data from my liveetData.json file using fixtures
         cy.login(this.lwadata.username, this.lwadata.password)
+        cy.wait(5000)
 
         //clicks the organizer button to access organizer module
         LwaD.getOrganizer().click()
+        cy.wait(5000)
 
         //clicks the Add organizer button
         LwaOrg.addOrganizer().click()
+        
+        //These commands fills the create organizer form
+        LwaOrg.newName().type(this.lwadata.name)
+
+        LwaOrg.newEmail().type(this.lwadata.email)
+
+        LwaOrg.newPhone().type(this.lwadata.phoneNum)
+
+        LwaOrg.newAddress().type(this.lwadata.address)
+
+        LwaOrg.newUsername().type(this.lwadata.user)
+
+        LwaOrg.newPass().type(this.lwadata.pass)
+
+        LwaOrg.createOrg().click()
+
+        //TODO Add assertions
+
+    });
+
+    it('verify Admin can manage sub-staffs created by Organizers', () => {
+        
+        LwaD.getOrganizer().click()
+        cy.wait(3000)
+       
+        LwaOrg.viewStaffOrg().click({force : true})
+        cy.wait(5000)
+
+        LwaOrg.disableStaff().click()
+
+        LwaOrg.logOutStaff().click()
+        
+    });
+
+    it('verify admin can update Organizer information', () => {
+        
+        LwaOrg.updateStaff.click()
+        LwaOrg.newName().type(this.lwadata.newName)
+        LwaOrg.newAddress().type(this.lwadata.newAddress)
+        LwaOrg.updateStaffBtn.click()
+
     });
 });

@@ -21,6 +21,8 @@ import lwaLog from "./pageObjects/liveetLogin"
         LwaLog.getPassword().type(password)
         LwaLog.loginButton().click()
     })
+
+    
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
