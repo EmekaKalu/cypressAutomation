@@ -76,12 +76,15 @@ describe('LiveetApp (ADMIN) Organizer Module Test Suite', () => {
         
     });
 
-    it('verify admin can update Organizer information', () => {
+    it('verify admin can update Organizer information', function(){
         
-        LwaOrg.updateStaff.click()
-        LwaOrg.newName().type(this.lwadata.newName)
-        LwaOrg.newAddress().type(this.lwadata.newAddress)
-        LwaOrg.updateStaffBtn.click()
+        LwaD.getOrganizer().click()
+        cy.wait(3000)
+        LwaOrg.updateStaff().click({force : true})
+        cy.wait(5000)
+        LwaOrg.newName().clear().type(this.lwadata.newName)
+        LwaOrg.newAddress().clear().type(this.lwadata.newAddress)
+        LwaOrg.updateStaffBtn().click()
 
     });
 });
