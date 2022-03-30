@@ -22,7 +22,21 @@ import lwaLog from "./pageObjects/liveetLogin"
         LwaLog.loginButton().click()
     })
 
+    Cypress.Commands.add('eventDate', (year, month, day) => {
+        cy.get('.rdtSwitch').dblclick()
+        cy.get('.rdtYear').contains(year).click()
+        cy.get('.rdtMonth').contains(month).click()
+        cy.get('.rdtDay').invoke('attr', 'data-value', day).contains(day).click()
+    })
     
+    Cypress.Commands.add('tSDate', (year, month, day) => {
+        cy.get('div.rdtPicker tr th').contains('March 2022').click()
+        cy.get('div.rdtPicker tr th').contains('2022').click()
+        cy.get('.rdtYear').contains(year).click()
+        cy.get('.rdtMonth').contains(month).click()
+        cy.get('div.rdtPicker tr td').invoke('attr', 'data-value', day).contains(day).invoke('show').scrollIntoView().click({force : true})
+        //cy.get('tr td')
+    })
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
