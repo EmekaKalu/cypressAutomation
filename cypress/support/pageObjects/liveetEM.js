@@ -47,5 +47,9 @@ class lwaEM {
     getTDcalendar2(){
         return cy.get(':nth-child(4) > .rdt > .form-control')
     }
+    UpdateTicket(){
+        return cy.get('#ticket_name')
+    }
+    
 }
 export default lwaEM

@@ -115,10 +115,15 @@ describe('LiveetApp (ADMIN) Event Manager Module Test Suite', () => {
     it('verify Admin can approve payment ', function(){
 
         LwaD.getEventManager().click()
-        cy.get('h4.jss18').each(($e1, index, $list)=> {
-            if ($e1.text()==="Coachella") {
-                cy.get('span.MuiButton-label').contains('Approve Payment').click()
-            }
-        })
+        cy.wait(3000)
+        cy.get('div.jss3').contains('Approve Payment ').click()
+        
+    });
+
+    it('verify Admin can update existing tickets', function(){
+        LwaD.getEventManager().click()
+        cy.get('div.jss3').contains('Tickets').click()
+        cy.get('.d-flex > button.btn-primary').click()
+        LwaEM.getTicketName().type('regular')
     });
 })
